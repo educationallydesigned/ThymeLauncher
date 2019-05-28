@@ -1,4 +1,6 @@
 import java.lang.ProcessBuilder;
+import java.io.IOException;
+import java.nio.file.Files;
 
 /**
  * The launcher allows the starting of the game under a different version of Java.
@@ -12,10 +14,14 @@ public class Launcher {
 	 *
 	 * @param      args  The arguments
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		// apply settings for process
 		ProcessBuilder game = new ProcessBuilder();
 		game.inheritIO();
 		game.command(JRE_DIR + "/bin/java", "-jar", JAR);
-		game.start();
+		// start process
+		Process process = game.start();
+		// pipe output to file.
+
 	}
 }
